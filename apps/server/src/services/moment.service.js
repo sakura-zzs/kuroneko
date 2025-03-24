@@ -17,20 +17,20 @@ class MomentService {
     //新增评论条数
     const statement = `SELECT
     m.*,
-    JSON_OBJECT( "url", a.url ) avatar,
+    JSON_OBJECT( "url", ANY_VALUE(a.url) ) avatar,
     JSON_OBJECT(
       "id",
-      p.id,
+      ANY_VALUE(p.id),
       "nickName",
-      p.nickName,
+      ANY_VALUE(p.nickName),
       "sex",
-      p.sex,
+      ANY_VALUE(p.sex),
       "location",
-      p.location,
+      ANY_VALUE(p.location),
       "selfProfile",
-      p.selfProfile,
+      ANY_VALUE(p.selfProfile),
       "birth",
-      p.birth 
+      ANY_VALUE(p.birth)
     ) profile,
     JSON_ARRAYAGG(
       JSON_OBJECT(
@@ -59,8 +59,13 @@ class MomentService {
     m.id 
   ORDER BY
     m.createTime DESC;`
-    const [res] = await connection.execute(statement)
-    return res
+    try {
+      const [res] = await connection.execute(statement)
+      return res
+    } catch (error) {
+      console.log(error)
+      throw error; // 添加错误抛出以便上层捕获
+    }
   }
   async getMomentById(id) {
     const statement = `SELECT * FROM moment WHERE id=?;`
