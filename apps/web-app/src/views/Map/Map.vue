@@ -57,8 +57,8 @@
           p.id == pointInfo[0].id
             ? startIcon
             : p.id == pointInfo[pointInfo.length - 1].id
-            ? endIcon
-            : passIcon
+              ? endIcon
+              : passIcon
         "
         :position="{ lng: p?.bdLng, lat: p?.bdLat }"
         @click="showPointDetail(p)"

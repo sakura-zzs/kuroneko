@@ -305,8 +305,8 @@ const profileForm = reactive({
     otherUserProfile.value?.profile?.sex == '男'
       ? 'male'
       : otherUserProfile.value?.profile?.sex == '女'
-      ? 'female'
-      : 'unKnow',
+        ? 'female'
+        : 'unKnow',
   selfProfile: otherUserProfile.value?.profile?.selfProfile,
   birth: otherUserProfile.value?.profile?.birth,
   location: otherUserProfile.value?.profile?.location

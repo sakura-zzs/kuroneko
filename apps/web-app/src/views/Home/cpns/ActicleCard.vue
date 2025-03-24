@@ -37,8 +37,8 @@ const getEditorText = (html) => {
         v-for="item in props.userMomentList.length
           ? props.userMomentList
           : isSearch
-          ? searchList
-          : momentList"
+            ? searchList
+            : momentList"
         :key="item.id"
       >
         <div class="acticle-card-header">
