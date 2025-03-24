@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "prepare": "husky install",
+    "prepare": "cd ../.. && husky install apps/web-app/.husky",
     "commit": "git-cz"
   },
   "dependencies": {
