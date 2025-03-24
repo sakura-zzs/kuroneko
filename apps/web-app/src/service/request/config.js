@@ -1,9 +1,15 @@
-let BASE_URL = ''
-if (import.meta.env.PORD) {
-  BASE_URL = 'http://kuroneko.icu:8001'
-} else {
-  BASE_URL = '/api'
-  // BASE_URL = 'http://localhost:8001'
+// 环境变量配置
+export const API_CONFIG = {
+  development: {
+    BASE_URL: import.meta.env.VITE_API_BASE_URL,
+    TIME_OUT: import.meta.env.VITE_API_TIMEOUT
+  },
+  production: {
+    BASE_URL: import.meta.env.VITE_API_BASE_URL,
+    TIME_OUT: import.meta.env.VITE_API_TIMEOUT
+  }
 }
-export const TIME_OUT = 10000
-export { BASE_URL }
+
+// 当前环境配置
+const ENV = import.meta.env.MODE
+export const { BASE_URL, TIME_OUT } = API_CONFIG[ENV]
