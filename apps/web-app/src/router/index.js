@@ -8,23 +8,28 @@ const routes = [
   },
   {
     path: '/publish',
-    component: () => import('@/views/Publish/Publish.vue')
+    component: () => import('@/views/Publish/Publish.vue'),
+    preFetch: true
   },
   {
     path: '/article/:id',
-    component: () => import('@/views/Article/Article.vue')
+    component: () => import('@/views/Article/Article.vue'),
+    preFetch: true
   },
   {
     path: '/user/:id',
-    component: () => import('@/views/User/User.vue')
+    component: () => import('@/views/User/User.vue'),
+    preFetch: true
   },
   {
     path: '/map',
-    component: () => import('@/views/Map/Map.vue')
+    component: () => import('@/views/Map/Map.vue'),
+    preFetch: true
   },
   {
     path: '/:pathMatch(.*)',
-    component: () => import('@/views/NotFound/NotFound.vue')
+    component: () => import('@/views/NotFound/NotFound.vue'),
+    preFetch: true
   }
 ]
 const router = createRouter({
