@@ -34,7 +34,15 @@ const routes = [
 ]
 const router = createRouter({
   routes,
-  history: createWebHistory()
+  history: createWebHistory(),
+  scrollBehavior(to, from, savedPosition) {
+    // 返回到上一次滚动的位置
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 })
 
 export default router
