@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { startProgress, closeProgress } from '@/utils/progress'
 
 const routes = [
   { path: '/', redirect: '/home' },
@@ -44,5 +45,11 @@ const router = createRouter({
     }
   }
 })
+router.beforeEach(() => {
+  startProgress()
+})
 
+router.afterEach(() => {
+  closeProgress()
+})
 export default router
